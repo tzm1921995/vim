@@ -96,20 +96,18 @@ func SetTitle()
 	if &filetype == 'sh' 
 		call setline(1,"\#########################################################################") 
 		call append(line("."), "\# File Name: ".expand("%")) 
-		call append(line(".")+1, "\# Author: ma6174") 
-		call append(line(".")+2, "\# mail: ma6174@163.com") 
-		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
-		call append(line(".")+4, "\#########################################################################") 
-		call append(line(".")+5, "\#!/bin/bash") 
-		call append(line(".")+6, "") 
+		call append(line(".")+1, "\# Author: tianzm") 
+		call append(line(".")+2, "\# Created Time: ".strftime("%c")) 
+		call append(line(".")+3, "\#########################################################################") 
+		call append(line(".")+4, "\#!/bin/bash") 
+		call append(line(".")+5, "") 
 	else 
 		call setline(1, "/*************************************************************************") 
 		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: ma6174") 
-		call append(line(".")+2, "	> Mail: ma6174@163.com ") 
-		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
-		call append(line(".")+5, "")
+		call append(line(".")+1, "	> Author: tianzm") 
+		call append(line(".")+2, "	> Created Time: ".strftime("%c")) 
+		call append(line(".")+3, " ************************************************************************/") 
+		call append(line(".")+4, "")
 	endif
 	if &filetype == 'cpp'
 		call append(line(".")+6, "#include<iostream>")
@@ -256,7 +254,7 @@ set helplang=cn
 " 总是显示状态行
 set laststatus=2
 " 命令行（在状态行下）的高度，默认为1，这里是2
-set cmdheight=2
+set cmdheight=1
 " 侦测文件类型
 filetype on
 " 载入文件类型插件
@@ -296,12 +294,12 @@ au BufRead,BufNewFile *  setfiletype txt
 "自动补全
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
-":inoremap { {<CR>}<ESC>O
-":inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap " ""<ESC>i
-:inoremap ' ''<ESC>i
+":inoremap \" \""<ESC>i
+":inoremap ' ''<ESC>i
 function! ClosePair(char)
 	if getline('.')[col('.') - 1] == a:char
 		return "\<Right>"
