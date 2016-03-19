@@ -1,12 +1,15 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+([[ -z ${CYG_SYS_BASHRC} ]] && CYG_SYS_BASHRC="1") || return
+[[ "$-" != *i* ]] && return 
 
+shopt -q login_shell || . /etc/profile.d/git-prompt.sh
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+#case $- in
+#    *i*) ;;
+#      *) return;;
+#esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -105,13 +108,16 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+#if ! shopt -oq posix; then
+#  if [ -f /usr/share/bash-completion/bash_completion ]; then
+#    . /usr/share/bash-completion/bash_completion
+#  elif [ -f /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#  fi
+#fi
+shopt -q login_shell || . /etc/profile.d/git-prompt.sh
+
 alias ll='ls -lah'
 alias grep='grep --color'
+
 
